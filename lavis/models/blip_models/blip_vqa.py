@@ -353,6 +353,7 @@ class BlipVQA(BlipBase):
 
         return answers
 
+
     @classmethod
     def from_config(cls, cfg=None):
         image_encoder = VisionTransformerEncoder.from_config(cfg)
