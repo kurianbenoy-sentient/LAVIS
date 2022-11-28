@@ -15,11 +15,12 @@ from lavis.models.base_model import BaseModel
 from lavis.models.vit import interpolate_pos_embed
 from transformers import BertTokenizer
 
+model_dir = os.environ.get("MODEL_DIR")
 
 class BlipBase(BaseModel):
     @classmethod
     def init_tokenizer(cls):
-        tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        tokenizer = BertTokenizer.from_pretrained(model_dir)
         tokenizer.add_special_tokens({"bos_token": "[DEC]"})
         tokenizer.add_special_tokens({"additional_special_tokens": ["[ENC]"]})
         tokenizer.enc_token_id = tokenizer.additional_special_tokens_ids[0]
